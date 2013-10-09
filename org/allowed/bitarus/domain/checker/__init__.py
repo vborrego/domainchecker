@@ -129,7 +129,10 @@ class Checker(object):
                 for item in whoisRes.expiration_date:
                     if type(item) is datetime.datetime:
                         expireDate = item   
-            else:
+            if type(whoisRes.expiration_date) is datetime.datetime:
+                expireDate = whoisRes.expiration_date
+            if type(whoisRes.expiration_date) is str:
+                print "str"
                 expireDate = whoisRes.expiration_date
                 
             domainStatus.append(Domain(whoisRes.domain_name, whoisRes.status , expireDate, str(whoisRes)))
