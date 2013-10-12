@@ -23,7 +23,7 @@
 		<key>to</key>
 		<string>tset@example.net</string>
 		<key>useStartTLS</key>
-		<true/>
+		<false/>
 		<key>user</key>
 		<string>test</string>
 	</dict>

@@ -9,31 +9,41 @@ located at the root of the project.
 The project was built using the following:
  * Slackware 14
  * Eclipse 3.8.2
- * python 2.7.3
+ * python 2.7.3/2.6.6
  * pywhois (http://code.google.com/p/pywhois/)
 
 ## Requirements
 The project requires the following:
- * python 2.7.3
+ * python 2.6.6
  * pywhois (http://code.google.com/p/pywhois/) 
  * pywhois patch (pywhoisPT_parser_py.patch) applied, mentioned on issue 52 (Portuguese domains), if not yet on the most recent release 
 
-### Python 2.7.3 on RHEL 6.4
-As mentioned in http://stackoverflow.com/questions/4149361/on-linux-suse-or-redhat-how-do-i-load-python-2-7
- * su
+## Installation on CentOS 6.3
+ * su # as root
+ * yum install mercurial # install mercurial
  * cd /tmp
- * wget http://www.python.org/ftp/python/2.7.3/Python-2.7.3.tgz 
- * tar xvfz Python-2.7.3.tgz 
- * cd Python-2.7.3 
- * ./configure
- * make # build
- * make altinstall
+ * hg clone https://code.google.com/p/pywhois # get pywhois
+ * cd pywhois
+ * python setup.py build
+ * python setup.py install
+ * exit #as normal user
+ * cd ~
+ * git clone https://code.google.com/p/domainchecker/
+ * cd domainchecker
+ * su # as root
+ * patch /usr/lib/python2.6/site-packages/python_whois-0.2-py2.6.egg/whois/parser.py  pywhoisPT_parser_py.patch
+ * exit # as normal user
+ * cp dummyConfig.plist ~/.domainChecker.plist
+ * cd ..
+ * vim .domainChecker.plist # define the settings 
 
-ln -s /lib64/libz.so.1 libz.so 
-cd /tmp
-wget https://pypi.python.org/packages/source/s/setuptools/setuptools-1.1.6.tar.gz
-tar xvzf setuptools-1.1.6.tar.gz
-cd setuptools-1.1.6
-/usr/local/bin/python2.7 setup.py build
-
+## Test  
+ * python domainchecker/__main__.py 
+ If all is well configured an email should arrive witn info about the defined domains.
  
+## Crontab setup to send the info daily
+ * crontab -e
+ * @daily /usr/bin/python /home/vitor/domainchecker/__main__.py
+ 
+  
+  

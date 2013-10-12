@@ -127,7 +127,7 @@ class Config(object):
                            'pass':'test',
                            'from':'test@example.net',
                            'to':'tset@example.net',
-                           'useStartTLS':True, 
+                           'useStartTLS':False, 
                            'subject':'Domain checker'
         }
         plistlib.writePlist(x, 'dummyConfig.plist')
