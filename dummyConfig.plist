@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>domains</key>
+	<array>
+		<string>aaa</string>
+		<string>bbb</string>
+		<string>ccc</string>
+	</array>
+	<key>mailSettings</key>
+	<dict>
+		<key>from</key>
+		<string>test@example.net</string>
+		<key>pass</key>
+		<string>test</string>
+		<key>port</key>
+		<integer>25</integer>
+		<key>server</key>
+		<string>mail.example.net</string>
+		<key>subject</key>
+		<string>Domain checker</string>
+		<key>to</key>
+		<string>tset@example.net</string>
+		<key>useStartTLS</key>
+		<false/>
+		<key>user</key>
+		<string>test</string>
+	</dict>
+</dict>
+</plist>
