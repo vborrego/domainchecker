@@ -1,0 +1,25 @@
+26a27
+>         '%d/%m/%Y',# 02/01/2013
+125a127,128
+>         elif domain.endswith('.pt'):
+>             return WhoisPt(domain,text) 
+180a184,202
+> class WhoisPt(WhoisEntry):
+>     """Whois parser for .pt domains 
+>     """
+>     regex = {
+>         'domain_name': 'domain name:\s*(.+)',        
+>         'creation_date': 'creation date \(dd\/mm\/yyyy\):\s*(.+)',
+>         'expiration_date': 'expiration date \(dd\/mm\/yyyy\):\s*(.+)',
+>         'name_servers': '\tNS\t(.+).',  # list of name servers
+>         'status': 'status:\s*(.+)',  # list of statuses
+>         'emails': '[\w.-]+@[\w.-]+\.[\w]{2,4}',  # list of email addresses
+>     }
+> 
+>     def __init__(self, domain, text):
+>         if text.strip() == 'No entries found':
+>             raise PywhoisError(text)
+>         else:
+>             WhoisEntry.__init__(self, domain, text, self.regex)
+>             
+>             
