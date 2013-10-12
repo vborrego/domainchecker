@@ -136,7 +136,7 @@ class Checker(object):
                 expireDate = whoisRes.expiration_date
             if type(whoisRes.expiration_date) is str:
                 #print "expiration_date is str type"
-                expireDate = strptime(whoisRes.expiration_date,"%Y-%m-%dT%H:%M:%S.0Z")
+                expireDate = datetime.datetime.strptime(whoisRes.expiration_date,"%Y-%m-%dT%H:%M:%S.0Z")
             if expireDate ==  None:    
                 #use expires since the regular expression for *.com may not be equal on all *.com domains
                 #print "Is none" 
