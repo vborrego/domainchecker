@@ -76,9 +76,9 @@ class Domain(object):
             self.exception = str(ex)
     def __repr__(self):
         if len(self.exception) == 0:
-            return "Domain:%s\nStatus:%s\nExpiration date: %s\nExpires in: %s\n\n" % (self.domain, self.status, self.expirationDate, self.expireDays)
+            return "Domain:%s\nExpiration date: %s\nExpires in: %s\n\n" % (self.domain, self.expirationDate, self.expireDays)
         else:
-            return "Domain:%s\nStatus:%s\nExpiration date: %s\nText: %s\nException: %s\n\n" % (self.domain, self.status, self.expirationDate, self.text, self.exception)
+            return "Domain:%s\nExpiration date: %s\nText: %s\nException: %s\n\n" % (self.domain, self.expirationDate, self.text, self.exception)
 
 class Config(object):
     def __init__(self):
