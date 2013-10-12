@@ -14,6 +14,9 @@ from os.path import expanduser
 import smtplib
 import syslog
 import os
+from time import strptime
+import re
+#from datetime import datetime
 
 class Logger(object):
     '''
@@ -132,9 +135,21 @@ class Checker(object):
             if type(whoisRes.expiration_date) is datetime.datetime:
                 expireDate = whoisRes.expiration_date
             if type(whoisRes.expiration_date) is str:
-                print "str"
-                expireDate = whoisRes.expiration_date
-                
+                #print "expiration_date is str type"
+                expireDate = strptime(whoisRes.expiration_date,"%Y-%m-%dT%H:%M:%S.0Z")
+            if expireDate ==  None:    
+                #use expires since the regular expression for *.com may not be equal on all *.com domains
+                #print "Is none" 
+                listx = re.findall('expires:\s*(.+)',whoisRes.text,re.IGNORECASE)
+                if(len(listx)>0): expireDate = datetime.datetime.strptime(listx[0],'%Y-%m-%d %H:%M:%S') 
+
+            if whoisRes.domain_name == None or len(whoisRes.domain_name) == 0:
+                #print "Domain name is empty"
+                listx = re.findall('\ndomain:\s*(.+)\n',whoisRes.text,re.IGNORECASE)
+                #print listx
+                #print whoisRes.text 
+                if(len(listx)>0): whoisRes.domain_name = listx[0] 
+
             domainStatus.append(Domain(whoisRes.domain_name, whoisRes.status , expireDate, str(whoisRes)))
             
         # send the results to the define email
@@ -143,4 +158,3 @@ class Checker(object):
             msg = "%s%s\n" % (msg , status)    
         Logger.log(msg)
         SendMail(config, 'Domain check', msg)
-        
