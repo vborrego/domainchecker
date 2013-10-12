@@ -30,23 +30,27 @@ class SendMail(object):
     '''
     Sends an email message
     '''
-    def __init__(self, config, subject, message):
+    def __init__(self, config, message):
         s = smtplib.SMTP()
-        header = 'From:%s\nTo:%s\nSubject:%s\n\n' % (config.getMailFrom(), config.getMailTo(), subject)
+        header = 'From:%s\nTo:%s\nSubject:%s\n\n' % (config.getMailFrom(), config.getMailTo(), config.getSubject())
         try:
             (code, response) = s.connect(config.getServer() , config.getPort())  # expects 220
             if code == 220: 
                 (code, response) = s.ehlo('domainChecker')  # expects 250
             else:
-                raise Exception('Connect failed') 
-            if code == 250: 
-                (code, response) = s.starttls()  # expects 220
-            else:
-                raise Exception('Ehlo failed')
-            if code == 220: 
+                raise Exception('Connect failed')
+            
+            if config.getUseStartTLS()==True: 
+                if code == 250: 
+                    (code, response) = s.starttls()  # expects 220
+                else:
+                    raise Exception('Ehlo failed')
+            
+            if code == 220 or code==250: # 220 use starttls, 250 dont use starttls 
                 (code, response) = s.login(config.getUser(), config.getPassword())  # expects 235
             else:
-                raise Exception('StartTLS failed')                
+                raise Exception('StartTLS failed')
+                            
             if code == 235: 
                 Logger.log("Before sendmail:%s" % (message))
                 (code, response) = s.sendmail(config.getMailFrom(), config.getMailTo(), "%s%s" % (header, message))
@@ -92,6 +96,8 @@ class Config(object):
         self.password = config['mailSettings']['pass']
         self.mailfrom = config['mailSettings']['from']
         self.mailto = config['mailSettings']['to']
+        self.useStartTLS = config['mailSettings']['useStartTLS']
+        self.subject = config['mailSettings']['subject']
     def getDomains(self): 
         return self.domains
     def getServer(self): 
@@ -106,6 +112,10 @@ class Config(object):
         return self.mailfrom
     def getMailTo(self): 
         return self.mailto
+    def getUseStartTLS(self): 
+        return self.useStartTLS
+    def getSubject(self): 
+        return self.subject
     @staticmethod
     def createDummyConfig():
         x = {}
@@ -116,7 +126,9 @@ class Config(object):
                            'user':'test',
                            'pass':'test',
                            'from':'test@example.net',
-                           'to':'tset@example.net' 
+                           'to':'tset@example.net',
+                           'useStartTLS':True, 
+                           'subject':'Domain checker'
         }
         plistlib.writePlist(x, 'dummyConfig.plist')
         
@@ -157,4 +169,4 @@ class Checker(object):
         for status in domainStatus:
             msg = "%s%s\n" % (msg , status)    
         Logger.log(msg)
-        SendMail(config, 'Domain check', msg)
+        SendMail(config, msg)
