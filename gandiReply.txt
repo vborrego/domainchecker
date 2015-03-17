@@ -1,0 +1,87 @@
+--- #YAML:1.0
+# GANDI Registrar whois database for .COM, .NET, .ORG., .INFO, .BIZ, .NAME
+#
+# Access and use restricted pursuant to French law on personal data.
+# Copy of whole or part of the data without permission from GANDI
+# is strictly forbidden.
+# The sole owner of a domain is the entity described in the relevant
+# 'domain:' record.
+# Domain ownership disputes should be settled using ICANN's Uniform Dispute
+# Resolution Policy: http://www.icann.org/udrp/udrp.htm
+# For inquiries about 'by policy' protection, please check directly
+# with the appropriate registry (Eurid, AFNIC, Red.es)
+#
+# Acces et utilisation soumis a la legislation francaise sur
+# les donnees personnelles.
+# Copie de tout ou partie de la base interdite sans autorisation de GANDI.
+# Le possesseur d'un domaine est l'entite decrite dans
+# l'enregistrement 'domain:' correspondant.
+# Un desaccord sur la possession d'un nom de domaine peut etre resolu
+# en suivant la Uniform Dispute Resolution Policy de l'ICANN:
+# http://www.icann.org/udrp/udrp.htm
+# Pour obtenir les informations en status 'Protected by policy', contactez
+# directement le registre concerne (Eurid, AFNIC, Red.es)
+#
+# 2013-10-13 14:52:48 CEST
+
+domain: moovetruck.com
+reg_created: 2012-10-05 14:13:48
+expires: 2013-10-05 14:13:48
+created: 2012-10-05 16:13:48
+changed: 2013-10-06 15:27:20
+transfer-prohibited: yes
+ns0: a.dns.gandi.net
+ns1: b.dns.gandi.net
+ns2: c.dns.gandi.net
+owner-c:
+  nic-hdl: JR4872-GANDI
+  owner-name: Magnetic Communication
+  organisation: Magnetic Communication
+  person: David Frambourg
+  address: "25 bis rue marcel dassault\r\nle bougainville"
+  zipcode: 31500
+  city: Toulouse
+  country: France
+  phone: +33.534411245
+  fax: ''
+  email: b061c356c485bed1076b0e50e5e6a2c0-1307609@contact.gandi.net
+  lastupdated: 2013-10-09 10:02:34
+admin-c:
+  nic-hdl: JR4872-GANDI
+  owner-name: Magnetic Communication
+  organisation: Magnetic Communication
+  person: David Frambourg
+  address: "25 bis rue marcel dassault\r\nle bougainville"
+  zipcode: 31500
+  city: Toulouse
+  country: France
+  phone: +33.534411245
+  fax: ''
+  email: b061c356c485bed1076b0e50e5e6a2c0-1307609@contact.gandi.net
+  lastupdated: 2013-10-09 10:02:34
+tech-c:
+  nic-hdl: JR4872-GANDI
+  owner-name: Magnetic Communication
+  organisation: Magnetic Communication
+  person: David Frambourg
+  address: "25 bis rue marcel dassault\r\nle bougainville"
+  zipcode: 31500
+  city: Toulouse
+  country: France
+  phone: +33.534411245
+  fax: ''
+  email: b061c356c485bed1076b0e50e5e6a2c0-1307609@contact.gandi.net
+  lastupdated: 2013-10-09 10:02:34
+bill-c:
+  nic-hdl: JR4872-GANDI
+  owner-name: Magnetic Communication
+  organisation: Magnetic Communication
+  person: David Frambourg
+  address: "25 bis rue marcel dassault\r\nle bougainville"
+  zipcode: 31500
+  city: Toulouse
+  country: France
+  phone: +33.534411245
+  fax: ''
+  email: b061c356c485bed1076b0e50e5e6a2c0-1307609@contact.gandi.net
+  lastupdated: 2013-10-09 10:02:34
